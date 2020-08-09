@@ -3,9 +3,10 @@ package com.mw.stockreader.services.impl
 import com.mw.stockreader.configuration.ApiTokenProvider
 import com.mw.stockreader.configuration.ApiUrlProvider
 import com.mw.stockreader.configuration.HttpClientProvider
-import com.mw.stockreader.entities.stocks.Company
+import com.mw.stockreader.entities.stockprofiles.Company
 import com.mw.stockreader.exceptions.NoMatchingCompanyException
-import com.mw.stockreader.services.CompanyQueryService
+import com.mw.stockreader.services.CompanyService
+import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -21,7 +22,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatchers.any
-import org.mockito.BDDMockito.given
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.reset
 import org.springframework.beans.factory.annotation.Autowired
@@ -32,16 +32,16 @@ import org.springframework.test.context.junit4.SpringRunner
 import java.io.ByteArrayInputStream
 
 @RunWith(SpringRunner::class)
-@SpringBootTest(classes = [CompanyQueryServiceImpl::class])
+@SpringBootTest(classes = [CompanyServiceImpl::class])
 @TestPropertySource(properties = [
     "sandbox.enabled=TRUE",
     "api.token.sandbox=sandbox",
     "api.url.sandbox=https://dummyapi"
 ])
-class CompanyQueryServiceImplTest {
+class CompanyServiceImplTest {
 
     @Autowired
-    private lateinit var service: CompanyQueryService
+    private lateinit var service: CompanyService
 
     @MockBean
     private lateinit var httpClientProvider: HttpClientProvider
@@ -63,7 +63,7 @@ class CompanyQueryServiceImplTest {
         val mockToken = "sandbox"
         val mockUrl = "https://dummyapi"
 
-        val companySymbol = "aapl"
+        val companySymbol = "AAPL"
 
         val responseBody = companyInformationResponseBody()
 
@@ -89,7 +89,7 @@ class CompanyQueryServiceImplTest {
 
         val company = service.getCompanyByCompanySymbol(companySymbol)
 
-        assertEquals(companySymbol, "aapl")
+        assertEquals(companySymbol, "AAPL")
         assertEquals(company, validCompanyObject())
 
         val argumentCaptor = ArgumentCaptor.forClass(HttpGet::class.java)

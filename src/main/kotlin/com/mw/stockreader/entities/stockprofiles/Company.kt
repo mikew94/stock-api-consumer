@@ -1,4 +1,4 @@
-package com.mw.stockreader.entities.stocks
+package com.mw.stockreader.entities.stockprofiles
 
 import com.google.gson.annotations.SerializedName
 
