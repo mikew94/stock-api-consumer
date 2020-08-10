@@ -1,4 +1,4 @@
-package com.mw.stockreader.configuration
+package com.mw.stockapiconsumer.configuration
 
 import org.apache.http.impl.client.CloseableHttpClient
 import org.apache.http.impl.client.HttpClients

@@ -1,1 +1,1 @@
-rootProject.name = "stock-reader"
+rootProject.name = "stock-api-consumer"

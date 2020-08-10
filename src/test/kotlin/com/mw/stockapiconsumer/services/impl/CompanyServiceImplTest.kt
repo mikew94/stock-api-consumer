@@ -1,10 +1,10 @@
-package com.mw.stockreader.services.impl
+package com.mw.stockapiconsumer.services.impl
 
-import com.mw.stockreader.configuration.ApiConnectionConfiguration
-import com.mw.stockreader.configuration.HttpClientProvider
-import com.mw.stockreader.entities.stockprofiles.Company
-import com.mw.stockreader.exceptions.NoMatchingCompanyException
-import com.mw.stockreader.services.CompanyService
+import com.mw.stockapiconsumer.configuration.ApiConnectionConfiguration
+import com.mw.stockapiconsumer.configuration.HttpClientProvider
+import com.mw.stockapiconsumer.entities.stockprofiles.Company
+import com.mw.stockapiconsumer.exceptions.NoMatchingCompanyException
+import com.mw.stockapiconsumer.services.CompanyService
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
@@ -26,7 +26,6 @@ import org.mockito.Mockito.reset
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.test.context.TestPropertySource
 import org.springframework.test.context.junit4.SpringRunner
 import java.io.ByteArrayInputStream
 

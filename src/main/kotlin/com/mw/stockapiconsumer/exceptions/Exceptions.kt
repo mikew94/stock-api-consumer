@@ -1,4 +1,4 @@
-package com.mw.stockreader.exceptions
+package com.mw.stockapiconsumer.exceptions
 
 import java.lang.Exception
 

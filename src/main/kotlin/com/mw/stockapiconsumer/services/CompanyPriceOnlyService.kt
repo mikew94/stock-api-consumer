@@ -1,7 +1,7 @@
-package com.mw.stockreader.services
+package com.mw.stockapiconsumer.services
 
-import com.mw.stockreader.entities.CompanyPriceOnly
-import com.mw.stockreader.exceptions.NoMatchingCompanyException
+import com.mw.stockapiconsumer.entities.CompanyPriceOnly
+import com.mw.stockapiconsumer.exceptions.NoMatchingCompanyException
 import org.apache.http.client.methods.CloseableHttpResponse
 
 interface CompanyPriceOnlyService {

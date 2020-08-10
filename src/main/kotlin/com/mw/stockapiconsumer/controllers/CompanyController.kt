@@ -1,7 +1,7 @@
-package com.mw.stockreader.controllers
+package com.mw.stockapiconsumer.controllers
 
 import com.google.gson.Gson
-import com.mw.stockreader.services.CompanyService
+import com.mw.stockapiconsumer.services.CompanyService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping

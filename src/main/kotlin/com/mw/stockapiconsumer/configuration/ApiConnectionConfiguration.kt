@@ -1,4 +1,4 @@
-package com.mw.stockreader.configuration
+package com.mw.stockapiconsumer.configuration
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.EnableConfigurationProperties

@@ -1,10 +1,10 @@
-package com.mw.stockreader.services.impl
+package com.mw.stockapiconsumer.services.impl
 
-import com.mw.stockreader.configuration.ApiConnectionConfiguration
-import com.mw.stockreader.configuration.HttpClientProvider
-import com.mw.stockreader.entities.CompanyPriceOnly
-import com.mw.stockreader.exceptions.NoMatchingCompanyException
-import com.mw.stockreader.services.CompanyPriceOnlyService
+import com.mw.stockapiconsumer.configuration.ApiConnectionConfiguration
+import com.mw.stockapiconsumer.configuration.HttpClientProvider
+import com.mw.stockapiconsumer.entities.CompanyPriceOnly
+import com.mw.stockapiconsumer.exceptions.NoMatchingCompanyException
+import com.mw.stockapiconsumer.services.CompanyPriceOnlyService
 import org.apache.http.client.methods.CloseableHttpResponse
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.util.EntityUtils
