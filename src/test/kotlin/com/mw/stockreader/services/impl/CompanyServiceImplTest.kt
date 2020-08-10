@@ -1,7 +1,6 @@
 package com.mw.stockreader.services.impl
 
-import com.mw.stockreader.configuration.ApiTokenProvider
-import com.mw.stockreader.configuration.ApiUrlProvider
+import com.mw.stockreader.configuration.ApiConnectionConfiguration
 import com.mw.stockreader.configuration.HttpClientProvider
 import com.mw.stockreader.entities.stockprofiles.Company
 import com.mw.stockreader.exceptions.NoMatchingCompanyException
@@ -33,11 +32,6 @@ import java.io.ByteArrayInputStream
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(classes = [CompanyServiceImpl::class])
-@TestPropertySource(properties = [
-    "sandbox.enabled=TRUE",
-    "api.token.sandbox=sandbox",
-    "api.url.sandbox=https://dummyapi"
-])
 class CompanyServiceImplTest {
 
     @Autowired
@@ -47,10 +41,7 @@ class CompanyServiceImplTest {
     private lateinit var httpClientProvider: HttpClientProvider
 
     @MockBean
-    private lateinit var apiTokenProvider: ApiTokenProvider
-
-    @MockBean
-    private lateinit var apiUrlProvider: ApiUrlProvider
+    private lateinit var apiConnectionConfiguration: ApiConnectionConfiguration
 
     @Before
     fun init() {
@@ -84,8 +75,8 @@ class CompanyServiceImplTest {
         given(httpClient.execute(any(HttpGet::class.java))).willReturn(httpResponse)
         given(httpClientProvider.client()).willReturn(httpClient)
 
-        whenever(apiTokenProvider.apiToken()).thenReturn(mockToken)
-        whenever(apiUrlProvider.apiUrl()).thenReturn(mockUrl)
+        whenever(apiConnectionConfiguration.apiToken()).thenReturn(mockToken)
+        whenever(apiConnectionConfiguration.apiUrl()).thenReturn(mockUrl)
 
         val company = service.getCompanyByCompanySymbol(companySymbol)
 
@@ -117,8 +108,8 @@ class CompanyServiceImplTest {
         given(httpClient.execute(any(HttpGet::class.java))).willReturn(httpResponse)
         given(httpClientProvider.client()).willReturn(httpClient)
 
-        whenever(apiTokenProvider.apiToken()).thenReturn(mockToken)
-        whenever(apiUrlProvider.apiUrl()).thenReturn(mockUrl)
+        whenever(apiConnectionConfiguration.apiToken()).thenReturn(mockToken)
+        whenever(apiConnectionConfiguration.apiUrl()).thenReturn(mockUrl)
 
         try {
             service.getCompanyByCompanySymbol(companySymbol)

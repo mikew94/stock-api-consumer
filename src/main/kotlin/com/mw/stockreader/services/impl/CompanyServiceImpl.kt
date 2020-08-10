@@ -1,8 +1,7 @@
 package com.mw.stockreader.services.impl
 
 import com.google.gson.Gson
-import com.mw.stockreader.configuration.ApiTokenProvider
-import com.mw.stockreader.configuration.ApiUrlProvider
+import com.mw.stockreader.configuration.ApiConnectionConfiguration
 import com.mw.stockreader.configuration.HttpClientProvider
 import com.mw.stockreader.entities.stockprofiles.Company
 import com.mw.stockreader.exceptions.NoMatchingCompanyException
@@ -18,8 +17,7 @@ import java.io.InputStreamReader
 
 @Service
 class CompanyServiceImpl(private val httpClientProvider: HttpClientProvider,
-                         private val apiTokenProvider: ApiTokenProvider,
-                         private val apiUrlProvider: ApiUrlProvider) : CompanyService {
+                         private val apiConnectionConfiguration: ApiConnectionConfiguration) : CompanyService {
 
     companion object {
         val logger: Logger = LoggerFactory.getLogger(CompanyServiceImpl.toString())
@@ -56,8 +54,8 @@ class CompanyServiceImpl(private val httpClientProvider: HttpClientProvider,
     }
 
     override fun getUrl(companySymbol: String): String {
-        val token = apiTokenProvider.apiToken()
-        val baseUrl = apiUrlProvider.apiUrl()
+        val token = apiConnectionConfiguration.apiToken()
+        val baseUrl = apiConnectionConfiguration.apiUrl()
         return  "$baseUrl/stock/$companySymbol/company?token=$token"
     }
 

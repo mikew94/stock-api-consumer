@@ -1,7 +1,6 @@
 package com.mw.stockreader.services.impl
 
-import com.mw.stockreader.configuration.ApiTokenProvider
-import com.mw.stockreader.configuration.ApiUrlProvider
+import com.mw.stockreader.configuration.ApiConnectionConfiguration
 import com.mw.stockreader.configuration.HttpClientProvider
 import com.mw.stockreader.entities.CompanyPriceOnly
 import com.mw.stockreader.services.CompanyPriceOnlyService
@@ -24,17 +23,11 @@ import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.test.context.TestPropertySource
 import org.springframework.test.context.junit4.SpringRunner
 import java.io.ByteArrayInputStream
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(classes = [CompanyPriceOnlyServiceImpl::class])
-@TestPropertySource(properties = [
-    "sandbox.enabled=TRUE",
-    "api.token.sandbox=sandbox",
-    "api.url.sandbox=https://dummyapi"
-])
 class CompanyPriceOnlyServiceImplTest {
 
     @Autowired
@@ -44,10 +37,7 @@ class CompanyPriceOnlyServiceImplTest {
     private lateinit var httpClientProvider: HttpClientProvider
 
     @MockBean
-    private lateinit var apiTokenProvider: ApiTokenProvider
-
-    @MockBean
-    private lateinit var apiUrlProvider: ApiUrlProvider
+    private lateinit var apiConnectionConfiguration: ApiConnectionConfiguration
 
     @Before
     fun init() {
@@ -81,8 +71,8 @@ class CompanyPriceOnlyServiceImplTest {
         given(httpClient.execute(ArgumentMatchers.any(HttpGet::class.java))).willReturn(httpResponse)
         given(httpClientProvider.client()).willReturn(httpClient)
 
-        whenever(apiTokenProvider.apiToken()).thenReturn(mockToken)
-        whenever(apiUrlProvider.apiUrl()).thenReturn(mockUrl)
+        whenever(apiConnectionConfiguration.apiToken()).thenReturn(mockToken)
+        whenever(apiConnectionConfiguration.apiUrl()).thenReturn(mockUrl)
 
         val company = service.getCompanyPriceOnlyByCompanySymbol(companySymbol)
 

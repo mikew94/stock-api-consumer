@@ -9,10 +9,9 @@ services:
       context: .
     container_name: stock-reader
     command: >-
-      --spring.profiles.active=apiTokenProvider,apiUrlProvider,insecureHttpClient
-      --api.token.sandbox=token
-      --api.url.sandbox=https://sandbox.url.com/
-      --sandbox.enabled=TRUE
+      --spring.profiles.active=insecureHttpClient
+      --api.token=token_here
+      --api.url=https://sandbox.iexapis.com/stable/
     environment:
       - ENVIRONMENT=local-docker
       - APPLICATION=stock_reader
