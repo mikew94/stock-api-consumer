@@ -10,7 +10,7 @@ services:
     container_name: stock-api-consumer
     command: >-
       --spring.profiles.active=insecureHttpClient
-      --api.token=Tpk_dbb40ba6fe374ef8bc4ea217cfd37639
+      --api.token=token
       --api.url=https://sandbox.iexapis.com/stable/
       --database.name=stock_database
       --database.user=dummy_user
