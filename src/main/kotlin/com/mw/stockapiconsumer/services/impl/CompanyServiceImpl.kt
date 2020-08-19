@@ -3,7 +3,7 @@ package com.mw.stockapiconsumer.services.impl
 import com.google.gson.Gson
 import com.mw.stockapiconsumer.configuration.ApiConnectionConfiguration
 import com.mw.stockapiconsumer.configuration.HttpClientProvider
-import com.mw.stockapiconsumer.entities.stockprofiles.Company
+import com.mw.stockapiconsumer.entities.Company
 import com.mw.stockapiconsumer.exceptions.NoMatchingCompanyException
 import com.mw.stockapiconsumer.services.CompanyService
 import org.apache.http.client.methods.CloseableHttpResponse

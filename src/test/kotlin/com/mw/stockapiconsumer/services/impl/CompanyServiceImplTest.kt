@@ -2,7 +2,7 @@ package com.mw.stockapiconsumer.services.impl
 
 import com.mw.stockapiconsumer.configuration.ApiConnectionConfiguration
 import com.mw.stockapiconsumer.configuration.HttpClientProvider
-import com.mw.stockapiconsumer.entities.stockprofiles.Company
+import com.mw.stockapiconsumer.entities.Company
 import com.mw.stockapiconsumer.exceptions.NoMatchingCompanyException
 import com.mw.stockapiconsumer.services.CompanyService
 import com.nhaarman.mockitokotlin2.given

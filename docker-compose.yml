@@ -10,15 +10,36 @@ services:
     container_name: stock-api-consumer
     command: >-
       --spring.profiles.active=insecureHttpClient
-      --api.token=token_here
+      --api.token=Tpk_dbb40ba6fe374ef8bc4ea217cfd37639
       --api.url=https://sandbox.iexapis.com/stable/
+      --database.name=stock_database
+      --database.user=dummy_user
+      --database.password=password
+      --database.endpoint=mysqldatabase
+      --database.port=3306
     environment:
       - ENVIRONMENT=local-docker
       - APPLICATION=stock-api-consumer
       - APP_VERSION=latest
       - COMPONENT=jar_file
     depends_on:
-      - "prometheus"
+      - prometheus
+      - mysqldatabase
+
+  mysqldatabase:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+#    command: --init-file /data/application/init.sql
+#    volumes:
+#      - ./init.sql:/data/application/init.sql
+    restart: always
+    container_name: mysqldatabase
+    environment:
+      MYSQL_ROOT_PASSWORD: "root_password"
+      MYSQL_DATABASE: "stock_database"
+      MYSQL_USER: "dummy_user"
+      MYSQL_PASSWORD: "password"
 
   prometheus:
     image: prom/prometheus

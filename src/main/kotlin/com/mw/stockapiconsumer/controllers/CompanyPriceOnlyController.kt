@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class CompanyPriceOnlyController(private val service: CompanyPriceOnlyService) {
 
+    // These controllers are primarily for testing during development and will be made redundant in later versions
+
     companion object {
         val logger: Logger = LoggerFactory.getLogger(CompanyPriceOnlyController.toString())
     }

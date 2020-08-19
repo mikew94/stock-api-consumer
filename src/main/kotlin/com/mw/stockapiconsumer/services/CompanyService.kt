@@ -1,6 +1,6 @@
 package com.mw.stockapiconsumer.services
 
-import com.mw.stockapiconsumer.entities.stockprofiles.Company
+import com.mw.stockapiconsumer.entities.Company
 import com.mw.stockapiconsumer.exceptions.NoMatchingCompanyException
 import org.apache.http.client.methods.CloseableHttpResponse
 
