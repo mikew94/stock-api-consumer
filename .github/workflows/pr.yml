@@ -6,13 +6,13 @@ on:
       - master
 
 jobs:
-  pull_request:
-
-    runs-on: ubuntu-latest
-
+  gradle:
+    runs-on: windows-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-
-      - name: build
-        run: gradle clean build test
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: clean build test
